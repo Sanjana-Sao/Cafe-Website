@@ -1,0 +1,56 @@
+<div>
+  <div style="position:relative; display:flex; align-items:center; justify-content:center; padding:1rem 0; min-height:56px;">
+    <button style="position:absolute; left:0; background:none;border:none;font-size:1.2rem;">←</button>
+    <div style="font-weight:700; font-size:1.1rem; text-align:center;">Cart</div>
+    <div style="position:absolute; right:0; width:40px;height:40px;border-radius:50%;background:#ccc"></div>
+  </div>
+
+  <!-- Dining In card -->
+  <div class="card" style="display:flex; justify-content:space-between; align-items:center; padding:1rem; margin-bottom:1rem">
+    <div>
+      <div style="font-weight:700">Dining In</div>
+    </div>
+    <div style="text-align:right">
+      <div style="background:#fff;padding:.25rem .6rem;border-radius:16px;border:1px solid #eee; display:inline-block">Table <strong style="margin-left:.4rem">{{ table ? table : '—' }}</strong></div>
+    </div>
+  </div>
+
+  <div style="font-size:1.3rem; font-weight:700; margin:1rem 0 .75rem">Your Order</div>
+
+  <!-- Items -->
+  <div>
+    <div *ngFor="let it of items" class="item-card">
+      <div class="item-left">
+        <div class="thumb"></div>
+      </div>
+      <div class="item-middle">
+        <div class="item-name">{{ it.name }}</div>
+        <div class="item-desc">Oat Milk, Light Roast</div>
+        <div class="item-price">${{ it.price.toFixed(2) }}</div>
+      </div>
+      <div class="item-right">
+        <div class="qty-pill">
+          <button class="pill-btn" (click)="cart.removeOne(it.id)">-</button>
+          <div class="pill-qty">{{ it.quantity }}</div>
+          <button class="pill-btn" (click)="cart.addItem({id:it.id, name:it.name, price:it.price})">+</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add more items placeholder -->
+  <div style="margin:1rem 0; text-align:center">
+    <button (click)="goToMenu()" style="padding:.6rem 1rem;border-radius:12px;border:1px dashed #ddd;background:transparent">+ Add more items</button>
+  </div>
+
+  <!-- Order summary -->
+  <div class="card summary">
+    <div style="font-weight:700; margin-bottom:.6rem">Order Summary</div>
+    <div style="display:flex; justify-content:space-between;"><div>Subtotal</div><div>${{ subtotal.toFixed(2) }}</div></div>
+    <div style="display:flex; justify-content:space-between;"><div>Tax</div><div>${{ tax.toFixed(2) }}</div></div>
+    <hr />
+    <div style="display:flex; justify-content:space-between; font-weight:800; font-size:1.4rem"> <div>Total</div><div>${{ total.toFixed(2) }}</div></div>
+    <div style="margin-top:1rem; text-align:center"><button class="button" (click)="placeOrder()" style="padding:1rem 2rem; border-radius:28px;">Place Order →</button></div>
+    <div style="text-align:center; color:var(--muted); margin-top:.6rem">Your order will be brought to Table {{ table ? table : '—' }}.</div>
+  </div>
+</div>

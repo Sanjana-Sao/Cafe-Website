@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env*
+cafevenv/
+.env/
+
+node_modules/
+dist/
+.env
+.vscode/
+.angular/

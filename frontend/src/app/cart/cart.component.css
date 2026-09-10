@@ -1,0 +1,27 @@
+.card{margin-top:.6rem}
+
+.item-card{
+	display:flex;
+	gap:1rem;
+	align-items:center;
+	padding: .8rem;
+	background:var(--card);
+	border-radius:12px;
+	margin-bottom:1rem;
+}
+.item-left .thumb{
+	width:72px;
+	height:72px;
+	background:#e9e6e2;
+	border-radius:8px;
+}
+.item-middle{flex:1}
+.item-name{font-weight:700}
+.item-desc{color:var(--muted); font-size:.95rem}
+.item-price{margin-top:.6rem; font-weight:700}
+.item-right{display:flex; align-items:center}
+.qty-pill{display:flex; align-items:center; gap:.4rem; padding:.35rem; border-radius:999px; border:1px solid #eee; background:#fff}
+.pill-btn{background:transparent;border:none;padding:.25rem .6rem;font-size:1rem}
+.pill-qty{min-width:28px; text-align:center; font-weight:700}
+.summary{margin-top:1.2rem}
+

@@ -1,0 +1,21 @@
+<div class="card">
+  <div style="display:flex; align-items:center; gap:.75rem; margin-bottom:1rem">
+    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3 7h14v2a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V7z" stroke="var(--accent)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M7 3v2" stroke="var(--accent)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <div>
+      <h1 style="margin:0; color:var(--accent)">Welcome to Urban Oasis</h1>
+      <p style="margin:0; color:var(--muted)">Settle in, scan your table, and enjoy the moment.</p>
+    </div>
+  </div>
+
+  <div style="margin-top:1rem">
+    <label>Table Number</label>
+    <input type="number" [(ngModel)]="tableNumber" style="width:100%; padding:.8rem; margin-top:.5rem; border:none; border-bottom:1px solid #ddd;" />
+  </div>
+
+  <div style="margin-top:1.2rem; text-align:center">
+    <button class="button" (click)="go()">View Menu →</button>
+  </div>
+</div>
