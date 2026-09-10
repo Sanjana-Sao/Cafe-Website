@@ -15,20 +15,41 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles.css"]
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.css"
+            ]
+          },
+         "configurations": {
+              "production": {
+                "optimization": true,
+                "outputHashing": "all",
+                "sourceMap": false,
+                "namedChunks": false,
+                "aot": true,
+                "extractLicenses": true,
+                "vendorChunk": false,
+                "buildOptimizer": true
+              }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "browserTarget": "cafe-frontend:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "cafe-frontend:build:production"
+            }
           }
         }
       }
     }
   },
-  "defaultProject": "cafe-frontend",
   "cli": {
     "analytics": "bf1ff6ed-2088-4d92-b4b5-2a954df1f54d"
   }
