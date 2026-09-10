@@ -24,7 +24,7 @@
     <h2>{{ categories[activeIndex].name }}</h2>
     <p style="color:var(--muted)">{{ categories[activeIndex].description }}</p>
 
-    <div style="margin-top:1rem; display:grid; gap:1rem">
+    <div class="menu-items" style="margin-top:1rem; display:grid; gap:1rem">
       <div *ngFor="let item of categories[activeIndex].items" class="card" style="display:flex;align-items:center;justify-content:space-between">
         <div style="flex:1; padding-right:1rem">
           <strong>{{ item.name }}</strong>

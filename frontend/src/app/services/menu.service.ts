@@ -42,7 +42,13 @@ export class MenuService {
         name: 'Brunch',
         description: 'Hearty dishes for daytime',
         items: [
-          { id: 'b1', name: 'Avocado Toast', description: 'Sourdough, smashed avo', price: 8.5 }
+          { id: 'b1', name: 'Avocado Toast', description: 'Sourdough, smashed avo', price: 8.5 },
+          { id: 'b2', name: 'Shakshuka', description: 'Baked eggs, spiced tomato, toasted sourdough', price: 11.5 },
+          { id: 'b3', name: 'Buttermilk Pancakes', description: 'Seasonal berries, maple syrup, whipped cream', price: 10.0 },
+          { id: 'b4', name: 'Breakfast Burrito', description: 'Scrambled eggs, beans, cheddar, salsa', price: 10.5 },
+          { id: 'b5', name: 'Smoked Salmon Bagel', description: 'Cream cheese, capers, pickled onion', price: 12.0 },
+          { id: 'b6', name: 'Mushroom Benedict', description: 'Poached eggs, roasted mushrooms, hollandaise', price: 12.5 },
+          { id: 'b7', name: 'Granola Bowl', description: 'Greek yogurt, house granola, fresh fruit', price: 8.0 }
         ]
       }
     ];

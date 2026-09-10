@@ -1,1 +1,8 @@
 .card{display:block}
+
+.menu-items {
+	max-height: 52vh;
+	overflow-y: auto;
+	padding: 0 .25rem .5rem 0;
+	scrollbar-width: thin;
+}
