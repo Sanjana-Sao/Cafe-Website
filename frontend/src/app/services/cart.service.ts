@@ -4,6 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 export interface CartItem {
   id: string;
   name: string;
+  description?: string;
   price: number;
   quantity: number;
 }
@@ -13,13 +14,13 @@ export class CartService {
   items: CartItem[] = [];
   changes = new BehaviorSubject<void>(undefined);
 
-  addItem(i: { id?: string; name: string; price: number }) {
+  addItem(i: { id?: string; name: string; description?: string; price: number }) {
     const id = i.id || i.name;
     const found = this.items.find((x) => x.id === id);
     if (found) {
       found.quantity += 1;
     } else {
-      this.items.push({ id, name: i.name, price: i.price, quantity: 1 });
+      this.items.push({ id, name: i.name, description: i.description, price: i.price, quantity: 1 });
     }
     this.changes.next();
   }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../services/cart.service';
+import { OrderService } from '../services/order.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -14,7 +15,15 @@ export class CartComponent implements OnInit {
   total = 0;
   table = 0;
 
-  constructor(private cart: CartService, private router: Router, private route: ActivatedRoute) {}
+  placingOrder = false;
+  orderError = '';
+
+  constructor(
+    public cart: CartService,
+    private orderService: OrderService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.calculate();
@@ -29,10 +38,27 @@ export class CartComponent implements OnInit {
   }
 
   placeOrder() {
-    const total = this.total;
-    const table = this.table;
-    this.cart.clear();
-    this.router.navigate(['/order-success'], { queryParams: { table, total } });
+    if (this.placingOrder || !this.table || !this.items.length) {
+      return;
+    }
+
+    this.placingOrder = true;
+    this.orderError = '';
+    const items = this.items.map((item) => ({ ...item }));
+    const description = JSON.stringify(items);
+
+    this.orderService.createOrder({ table: this.table, items, description }).subscribe({
+      next: (order) => {
+        this.cart.clear();
+        this.router.navigate(['/order-pending'], {
+          queryParams: { orderId: order.order_id }
+        });
+      },
+      error: () => {
+        this.placingOrder = false;
+        this.orderError = 'Unable to place your order. Please try again.';
+      }
+    });
   }
 
   goToMenu() {

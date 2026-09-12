@@ -1,0 +1,54 @@
+<div class="payments-page">
+  <header class="topbar">
+    <svg class="logo" viewBox="0 0 48 48" aria-label="Urban Oasis logo"><path d="M24 40C12 38 7 29 9 18c8 2 13 7 15 14 2-12 8-18 16-22 2 14-3 25-16 30Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M24 39V17" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+    <strong>Urban Oasis</strong>
+    <span class="profile">JD</span>
+  </header>
+
+  <main>
+    <h1>Payment Tracking</h1>
+    <p class="intro">Manage pending payments for served orders.</p>
+
+    <div class="summary">
+      <div class="summary-card">
+        <span>{{ activeTab === 'pending' ? 'PENDING PAYMENTS' : 'COMPLETED TODAY' }}</span>
+        <strong class="count">{{ pendingCount }}</strong>
+      </div>
+      <div class="summary-card">
+        <span>UNCOLLECTED VALUE</span>
+        <strong>${{ pendingTotal.toFixed(2) }}</strong>
+      </div>
+    </div>
+
+    <div class="tabs">
+      <span [class.active]="activeTab === 'pending'" (click)="showPending()">Pending</span>
+      <span [class.active]="activeTab === 'completed'" (click)="showCompleted()">Completed Today</span>
+    </div>
+
+    <input class="search" placeholder="⌕  Search table or order..." />
+
+    <p *ngIf="loading" class="message">Loading payments...</p>
+    <p *ngIf="error" class="message error">{{ error }}</p>
+
+    <section *ngFor="let order of orders" class="payment-card">
+      <div class="payment-row">
+        <span class="table-number">{{ order.table_number }}</span>
+        <div class="order-info">
+          <strong>#{{ order.order_id | slice:0:6 | uppercase }}</strong>
+          <span>Served order</span>
+        </div>
+        <strong>${{ order.order_payment_amount.toFixed(2) }}</strong>
+      </div>
+      <button *ngIf="activeTab === 'pending'" class="paid-btn" (click)="markAsPaid(order)" [disabled]="paying === order.order_id">
+        {{ paying === order.order_id ? 'Saving...' : '✓  Mark as Paid' }}
+      </button>
+    </section>
+  </main>
+
+  <nav class="bottom-nav">
+    <a routerLink="/queue"><i class="nav-icon queue"></i><small>Queue</small></a>
+    <a routerLink="/pending-approval"><i class="nav-icon pending"></i><small>Pending</small></a>
+    <span class="selected"><i class="nav-icon payments"></i><small>Payments</small></span>
+    <a routerLink="/sales"><i class="nav-icon sales"></i><small>Sales</small></a>
+  </nav>
+</div>

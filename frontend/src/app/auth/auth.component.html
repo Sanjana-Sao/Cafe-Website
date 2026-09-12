@@ -1,0 +1,57 @@
+<div class="auth-page">
+  <section class="auth-card">
+    <svg class="brand-mark" viewBox="0 0 48 48" aria-label="Urban Oasis logo">
+      <path d="M24 40C12 38 7 29 9 18c8 2 13 7 15 14 2-12 8-18 16-22 2 14-3 25-16 30Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M24 39V17" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+    </svg>
+    <h1>Urban Oasis</h1>
+    <p>Staff &amp; Manager Portal</p>
+
+    <div class="role-tabs">
+      <button [class.active]="role === 'staff'" (click)="role = 'staff'">Staff</button>
+      <button [class.active]="role === 'manager'" (click)="role = 'manager'">Manager</button>
+    </div>
+
+    <form (ngSubmit)="submit()">
+      <label for="email">Email Address</label>
+      <div class="input-wrap">
+        <span>✉</span>
+        <input id="email" name="email" type="email" [(ngModel)]="email" required
+          [placeholder]="role === 'staff' ? 'employee@urbanoasis.com' : 'manager@urbanoasis.com'" />
+      </div>
+
+      <label for="password">Password</label>
+      <div class="input-wrap">
+        <span>♙</span>
+        <input id="password" name="password" type="password" [(ngModel)]="password" required
+          placeholder="••••••••" />
+      </div>
+
+      <div *ngIf="mode === 'signup'">
+        <label for="confirmPassword">Confirm Password</label>
+        <div class="input-wrap">
+          <span>♙</span>
+          <input id="confirmPassword" name="confirmPassword" type="password" [(ngModel)]="confirmPassword" required
+            placeholder="••••••••" />
+        </div>
+      </div>
+
+      <div *ngIf="mode === 'login'" class="form-options">
+        <label class="remember"><input type="checkbox" name="rememberMe" [(ngModel)]="rememberMe" /> Remember me</label>
+        <a href="#" (click)="$event.preventDefault()">Forgot Password?</a>
+      </div>
+
+      <p *ngIf="error" class="error">{{ error }}</p>
+      <button class="submit-button" type="submit" [disabled]="loading">
+        {{ loading ? 'Please wait...' : (mode === 'login' ? 'Sign In' : 'Sign Up') }}
+      </button>
+    </form>
+
+    <p class="switch-link">
+      {{ mode === 'login' ? 'New employee?' : 'Already registered?' }}
+      <a href="#" (click)="$event.preventDefault(); switchMode()">
+        {{ mode === 'login' ? 'Sign Up' : 'Sign In' }}
+      </a>
+    </p>
+  </section>
+</div>

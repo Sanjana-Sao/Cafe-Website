@@ -1,0 +1,38 @@
+<div class="pending-wrap">
+  <div class="pending-icon">◷</div>
+  <h2>Order Pending</h2>
+  <p class="subtitle">Waiting for staff confirmation...</p>
+
+  <div *ngIf="loading" class="message">Loading your order...</div>
+  <div *ngIf="error" class="message error">{{ error }}</div>
+
+  <ng-container *ngIf="!loading && !error">
+    <div class="order-card">
+      <div class="order-header">
+        <strong>Table {{ table }}</strong>
+        <span>ORDER #{{ orderId | slice:0:8 | uppercase }}</span>
+      </div>
+
+      <div class="items">
+        <div *ngFor="let item of items" class="item-row">
+          <div class="item-copy">
+            <strong>{{ item.quantity }}x</strong>
+            <div>
+              <div class="item-name">{{ item.name }}</div>
+              <div class="item-description">{{ item.description || 'Freshly prepared' }}</div>
+            </div>
+          </div>
+          <strong>${{ (item.price * item.quantity).toFixed(2) }}</strong>
+        </div>
+      </div>
+
+      <div class="total-row">
+        <span>Total</span>
+        <strong>${{ amount.toFixed(2) }}</strong>
+      </div>
+    </div>
+
+    <button class="primary-btn add-btn" (click)="addMoreItems()">⊕ &nbsp; Add more items</button>
+    <button class="primary-btn server-btn" type="button">Call server</button>
+  </ng-container>
+</div>

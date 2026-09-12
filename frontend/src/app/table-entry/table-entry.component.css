@@ -1,2 +1,2 @@
-.card{margin-top:2rem}
+.customer-shell{width:calc(100% - 2rem); max-width:720px; margin:2rem auto 0}
 input{font-size:1rem}

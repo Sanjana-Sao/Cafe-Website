@@ -1,5 +1,5 @@
 from typing import List
-from ..schema.schemas import MenuItemOut, MenuCategoryOut
+from schema.schemas import MenuItemOut, MenuCategoryOut
 
 
 class MenuService:

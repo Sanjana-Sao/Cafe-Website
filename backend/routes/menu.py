@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends
 from typing import List
-from ..schema.schemas import MenuItemOut
-from ..services.menu_service import MenuService
+from schema.schemas import MenuItemOut
+from services.menu_service import MenuService
 
 router = APIRouter()
 

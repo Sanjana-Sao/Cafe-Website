@@ -1,0 +1,31 @@
+<div class="queue-page">
+  <header class="queue-header">
+    <strong>Urban Oasis</strong>
+    <span class="avatar">JD</span>
+  </header>
+  <main>
+    <h1>Live Queue</h1>
+    <p>Active orders currently in preparation or ready to serve.</p>
+    <p *ngIf="error" class="error">{{ error }}</p>
+    <section *ngFor="let order of orders" class="queue-card">
+      <div class="card-top">
+        <strong>#ORD-{{ order.order_id | slice:0:4 | uppercase }}</strong>
+        <span>Table {{ order.table_number }}</span>
+      </div>
+      <span class="status">{{ order.order_status | uppercase }} · {{ order.order_queue | uppercase }}</span>
+      <div *ngFor="let item of order.items" class="queue-item">
+        <span>{{ item.quantity }}x {{ item.name }}</span>
+        <span>✓</span>
+      </div>
+      <button class="serve-btn" (click)="markAsServed(order)" [disabled]="serving === order.order_id">
+        {{ serving === order.order_id ? 'Saving...' : 'Mark as Served →' }}
+      </button>
+    </section>
+  </main>
+  <nav class="bottom-nav">
+    <span class="selected"><i class="nav-icon queue"></i><small>Queue</small></span>
+    <a routerLink="/pending-approval"><i class="nav-icon pending"></i><small>Pending</small></a>
+    <a *ngIf="authService.isManager()" routerLink="/payments"><i class="nav-icon payments"></i><small>Payments</small></a>
+    <a *ngIf="authService.isManager()" routerLink="/sales"><i class="nav-icon sales"></i><small>Sales</small></a>
+  </nav>
+</div>

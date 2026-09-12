@@ -1,0 +1,141 @@
+.pending-wrap {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3rem 1.25rem;
+  background: #f5f2ee;
+}
+
+.pending-icon {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: #264a39;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  margin: 0;
+  font-size: 2.1rem;
+  font-weight: 800;
+}
+
+.subtitle {
+  margin: 0.5rem 0 1.5rem;
+  color: #6d675f;
+  font-size: 1.05rem;
+}
+
+.order-card {
+  width: min(100%, 420px);
+  background: #f8f7f3;
+  border: 1px solid #c8cec8;
+  border-radius: 18px;
+  padding: 1.4rem 1.2rem;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.order-header,
+.total-row,
+.item-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+}
+
+.order-header {
+  font-size: 1.35rem;
+  padding: 0 0 1.25rem;
+}
+
+.order-header span {
+  background: #e5e3df;
+  border-radius: 999px;
+  color: #4c504c;
+  font-size: 0.85rem;
+  padding: 0.55rem 0.8rem;
+}
+
+.items {
+  border-top: 1px solid #c8cec8;
+  border-bottom: 1px solid #c8cec8;
+  padding: 0.75rem 0;
+}
+
+.item-row {
+  padding: 0.75rem 0;
+}
+
+.item-copy {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.item-copy > strong {
+  color: #264a39;
+  min-width: 2rem;
+}
+
+.item-name {
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.item-description {
+  color: #6d675f;
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+.total-row {
+  font-size: 1.25rem;
+  padding-top: 1rem;
+}
+
+.total-row strong {
+  color: #264a39;
+  font-size: 1.7rem;
+}
+
+.primary-btn {
+  border: none;
+  background: #264a39;
+  color: white;
+  border-radius: 999px;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  width: min(100%, 420px);
+}
+
+.add-btn {
+  background: transparent;
+  color: #765f52;
+  border: 1px solid #765f52;
+}
+
+.server-btn {
+  margin-top: 0.85rem;
+  background: #765f52;
+}
+
+.message {
+  margin: 1rem 0;
+  color: #6d675f;
+}
+
+.message.error {
+  color: #b42318;
+}

@@ -1,0 +1,60 @@
+<div class="approval-page">
+  <header class="topbar">
+    <span class="menu-icon">☰</span>
+    <strong>Urban Oasis</strong>
+    <span class="avatar">JD</span>
+  </header>
+
+  <main>
+    <h1>Pending Approval</h1>
+    <p class="intro">Review and confirm incoming orders before sending to kitchen.</p>
+
+    <div class="toolbar">
+      <span class="new-orders">● {{ orders.length }} NEW ORDERS</span>
+      <button class="refresh" (click)="loadOrders()" [disabled]="loading">↻</button>
+    </div>
+
+    <div class="tabs">
+      <span class="active">All Pending ({{ orders.length }})</span>
+      <span>Dine-in ({{ orders.length }})</span>
+      <span>Takeaway</span>
+    </div>
+
+    <p *ngIf="loading" class="message">Loading orders...</p>
+    <p *ngIf="error" class="message error">{{ error }}</p>
+
+    <section *ngFor="let order of orders; let i = index" class="order-card">
+      <div class="card-header">
+        <div>
+          <strong>#{{ order.order_id | slice:0:6 | uppercase }}</strong>
+          <span class="table-label">Table {{ order.table_number }}</span>
+          <div>Customer: Walk-in</div>
+        </div>
+        <div class="waiting">◷ WAITING</div>
+      </div>
+
+      <div class="items">
+        <div *ngFor="let item of order.items" class="item">
+          <span class="quantity">{{ item.quantity }}</span>
+          <div>
+            <strong>{{ item.name }}</strong>
+            <div class="description">• {{ item.description || 'Freshly prepared' }}</div>
+          </div>
+        </div>
+        <p *ngIf="!order.items.length" class="description">Order details unavailable</p>
+      </div>
+
+      <textarea placeholder="Add kitchen notes before approving..."></textarea>
+      <button class="approve-btn" (click)="approve(order)" [disabled]="approving === order.order_id">
+        {{ approving === order.order_id ? 'Approving...' : 'Approve Order →' }}
+      </button>
+    </section>
+  </main>
+
+  <nav class="bottom-nav">
+    <a routerLink="/queue"><i class="nav-icon queue"></i><small>Queue</small></a>
+    <span class="selected"><i class="nav-icon pending"></i><small>Pending</small></span>
+    <a *ngIf="authService.isManager()" routerLink="/payments"><i class="nav-icon payments"></i><small>Payments</small></a>
+    <a *ngIf="authService.isManager()" routerLink="/sales"><i class="nav-icon sales"></i><small>Sales</small></a>
+  </nav>
+</div>

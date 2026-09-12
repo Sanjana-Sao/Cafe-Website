@@ -1,0 +1,16 @@
+.queue-page { min-height: 100vh; background: var(--bg); color: var(--text); padding-bottom: 6rem; }
+.queue-header { height: 76px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; padding: 0 max(1.25rem, calc((100% - 720px) / 2)); font-size: 1.25rem; background: #fff; }
+.avatar { display:grid; place-items:center; width:38px; height:38px; border-radius:50%; background:var(--accent-soft); color:var(--accent); font-size:.75rem; font-weight:800; }
+main { width:min(100%, 720px); margin:auto; padding:2rem 1.25rem; }
+h1 { font-size: 2.4rem; letter-spacing:-.04em; margin:0; }
+main > p { font-size: 1.1rem; line-height: 1.35; }
+.queue-card { background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 1.35rem; margin: 1.2rem 0; box-shadow: 0 8px 24px rgba(31,53,39,.06); }
+.card-top { display: flex; justify-content: space-between; font-size: 1.2rem; }
+.status { display: inline-block; background: #e6efe7; color: #47654e; border-radius: 999px; padding: .3rem .7rem; margin: .8rem 0; font-weight: 700; }
+.queue-item { display: flex; justify-content: space-between; border-top: 1px solid #eee; padding: .8rem 0; font-size: 1.05rem; }
+.serve-btn { width: 100%; background: #2f4938; color: #fff; border: 0; border-radius: 6px; padding: .9rem; font: inherit; font-weight: 700; margin-top: .7rem; }
+.error { color: #b42318; }
+.bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; display: flex; justify-content: center; gap: 2.5rem; padding: .65rem; background: rgba(255,255,255,.96); border-top: 1px solid var(--border); backdrop-filter: blur(10px); }
+.bottom-nav span, .bottom-nav a { display: flex; flex-direction: column; align-items: center; color: #38443b; text-decoration: none; }
+.bottom-nav .selected { background: var(--accent); color: white; border-radius: 12px; padding: .45rem 1rem; }
+.bottom-nav small { font-size: .75rem; }

@@ -1,0 +1,50 @@
+<div class="sales-page">
+  <header class="topbar">
+    <div class="brand"><svg class="brand-mark" viewBox="0 0 48 48" aria-label="Urban Oasis logo"><path d="M24 40C12 38 7 29 9 18c8 2 13 7 15 14 2-12 8-18 16-22 2 14-3 25-16 30Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M24 39V17" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg><strong>Urban Oasis</strong></div>
+    <span class="profile">JD</span>
+  </header>
+
+  <main>
+    <div class="period-tabs">
+      <button [class.active]="period === 'today'" (click)="selectPeriod('today')">Today</button>
+      <button [class.active]="period === 'week'" (click)="selectPeriod('week')">This Week</button>
+      <button [class.active]="period === 'month'" (click)="selectPeriod('month')">This Month</button>
+    </div>
+
+    <button class="export-button" (click)="exportReport()"><span>⇩</span> Export Report</button>
+
+    <p *ngIf="loading" class="message">Loading sales...</p>
+    <p *ngIf="error" class="message error">{{ error }}</p>
+
+    <section class="metric-card">
+      <h2>Total Revenue</h2>
+      <strong class="revenue">${{ totalRevenue.toFixed(2) }}</strong>
+      <p class="positive">↗ +12.5% vs yesterday</p>
+    </section>
+
+    <section class="metric-card">
+      <h2>Orders Completed</h2>
+      <strong class="orders-count">{{ ordersCompleted }}</strong>
+      <p class="positive">↗ +5.2% vs yesterday</p>
+    </section>
+
+    <section class="metric-card">
+      <h2>Avg. Wait Time</h2>
+      <strong class="wait-time">{{ averageWaitTime }}</strong>
+      <p class="negative">↗ +0.5m vs yesterday</p>
+    </section>
+
+    <section class="metric-card top-item-card">
+      <h2>Top Item</h2>
+      <strong>{{ topItem.name }}</strong>
+      <p>{{ topItem.quantity }} units sold</p>
+    </section>
+  </main>
+
+  <nav class="bottom-nav">
+    <a routerLink="/queue"><i class="nav-icon queue"></i><small>Queue</small></a>
+    <a routerLink="/pending-approval"><i class="nav-icon pending"></i><small>Pending</small></a>
+    <a routerLink="/payments"><i class="nav-icon payments"></i><small>Payments</small></a>
+    <span class="selected"><i class="nav-icon sales"></i><small>Sales</small></span>
+  </nav>
+</div>

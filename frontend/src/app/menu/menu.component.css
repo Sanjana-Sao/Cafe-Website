@@ -1,4 +1,6 @@
+.customer-shell{width:calc(100% - 2rem); max-width:720px; margin:0 auto; padding-bottom:5.5rem}
 .card{display:block}
+.bottom-cart-bar{position:fixed; left:1rem; right:1rem; bottom:0; z-index:10; max-width:688px; margin:0 auto}
 
 .menu-items {
 	max-height: 52vh;

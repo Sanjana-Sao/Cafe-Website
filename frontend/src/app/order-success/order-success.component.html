@@ -1,7 +1,7 @@
 <div class="success-wrap">
-  <div class="success-icon">✓</div>
-  <h2>Order Placed</h2>
-  <p class="subtitle">Your order is on the way.</p>
+  <div class="success-icon">◷</div>
+  <h2>Order Pending</h2>
+  <p class="subtitle">Waiting for staff confirmation...</p>
 
   <div class="info-box">
     <div class="row">
@@ -9,10 +9,27 @@
       <strong>{{ table ? table : '—' }}</strong>
     </div>
     <div class="row">
+      <span>Order ID</span>
+      <strong>{{ orderId }}</strong>
+    </div>
+    <div class="row">
+      <span>Status</span>
+      <strong>{{ status }}</strong>
+    </div>
+    <div class="row">
+      <span>Queue</span>
+      <strong>{{ queue }}</strong>
+    </div>
+    <div class="row">
+      <span>Payment</span>
+      <strong>{{ payment }}</strong>
+    </div>
+    <div class="row">
       <span>Total</span>
       <strong>${{ total.toFixed(2) }}</strong>
     </div>
   </div>
 
-  <button class="primary-btn" (click)="goHome()">Back to Home</button>
+  <button class="primary-btn" (click)="addMoreItems()">Add more items</button>
+  <button class="primary-btn secondary-btn" (click)="goHome()">Back to Home</button>
 </div>
