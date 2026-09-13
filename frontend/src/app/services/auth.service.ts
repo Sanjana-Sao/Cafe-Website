@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
+import { API_BASE_URL } from '../config/api.config';
 
 export type UserRole = 'staff' | 'manager';
 
@@ -23,7 +24,7 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   signup(email: string, password: string, role: UserRole): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>('/api/auth/signup', { email, password, role }).pipe(
+    return this.http.post<AuthResponse>(`${API_BASE_URL}/auth/signup`, { email, password, role }).pipe(
       tap((response) => this.saveSession(response))
     );
   }
@@ -33,7 +34,7 @@ export class AuthService {
       .set('username', email)
       .set('password', password)
       .set('scope', role);
-    return this.http.post<AuthResponse>('/api/auth/login', body.toString(), {
+    return this.http.post<AuthResponse>(`${API_BASE_URL}/auth/login`, body.toString(), {
       headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' })
     }).pipe(
       tap((response) => this.saveSession(response))

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { CartItem } from './cart.service';
+import { API_BASE_URL } from '../config/api.config';
 
 export interface CreateOrderRequest {
   table: number;
@@ -32,38 +33,38 @@ export class OrderService {
   constructor(private http: HttpClient) {}
 
   createOrder(request: CreateOrderRequest): Observable<OrderResponse> {
-    return this.http.post<OrderResponse>('/api/orders', request);
+    return this.http.post<OrderResponse>(`${API_BASE_URL}/orders`, request);
   }
 
   getOrder(orderId: string): Observable<OrderResponse> {
-    return this.http.get<OrderResponse>(`/api/orders/${orderId}`);
+    return this.http.get<OrderResponse>(`${API_BASE_URL}/orders/${orderId}`);
   }
 
   listPendingOrders(): Observable<OrderResponse[]> {
-    return this.http.get<OrderResponse[]>('/api/orders');
+    return this.http.get<OrderResponse[]>(`${API_BASE_URL}/orders`);
   }
 
   approveOrder(orderId: string): Observable<OrderResponse> {
-    return this.http.post<OrderResponse>(`/api/orders/${orderId}/approve`, {});
+    return this.http.post<OrderResponse>(`${API_BASE_URL}/orders/${orderId}/approve`, {});
   }
 
   listQueueOrders(): Observable<OrderResponse[]> {
-    return this.http.get<OrderResponse[]>('/api/orders/queue');
+    return this.http.get<OrderResponse[]>(`${API_BASE_URL}/orders/queue`);
   }
 
   serveOrder(orderId: string): Observable<OrderResponse> {
-    return this.http.post<OrderResponse>(`/api/orders/${orderId}/serve`, {});
+    return this.http.post<OrderResponse>(`${API_BASE_URL}/orders/${orderId}/serve`, {});
   }
 
   listPendingPayments(): Observable<PaymentListResponse> {
-    return this.http.get<PaymentListResponse>('/api/orders/payments');
+    return this.http.get<PaymentListResponse>(`${API_BASE_URL}/orders/payments`);
   }
 
   markOrderPaid(orderId: string): Observable<OrderResponse> {
-    return this.http.post<OrderResponse>(`/api/orders/${orderId}/pay`, {});
+    return this.http.post<OrderResponse>(`${API_BASE_URL}/orders/${orderId}/pay`, {});
   }
 
   listCompletedPayments(): Observable<PaymentListResponse> {
-    return this.http.get<PaymentListResponse>('/api/orders/payments/completed-today');
+    return this.http.get<PaymentListResponse>(`${API_BASE_URL}/orders/payments/completed-today`);
   }
 }
