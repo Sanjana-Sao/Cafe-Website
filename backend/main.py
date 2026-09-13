@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from routes import auth, menu, order
+from config.config import settings
 
 
 app = FastAPI(title="Cafe API")
@@ -17,4 +18,4 @@ app.include_router(auth.router, prefix="/api")
 if __name__ == "__main__":
     import uvicorn
 
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host=settings.HOST, port=settings.PORT, log_level="info")
